@@ -1,53 +1,30 @@
-import { Search, ShoppingCartRounded } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-
-const SearchContainer = styled.div`
-  border: 0.5px solid lightgray;
-  display: flex;
-  align-items: center;
-  margin-left: 25px;
-  padding: 5px;
-`
-
-const Input = styled.input`
-  border: none;
-`
-
-const Logo = styled.h1`
-  font-weight: bold;
-`
-
-const MenuItem = styled.div`
-  font-size: 14px;
-  cursor: pointer;
-  margin-left: 25px;
-`
 
 const Navbar = () => {
   return (
     <div className="nav-container">
       <div className="nav-wrapper">
         <div className="nav-left">
-          <SearchContainer>
-            <Input placeholder="Search" />
-            <Search style={{ color: 'gray', fontSize: 16 }} />
-          </SearchContainer>
+          <div className="nav-search">
+            <form className="example" action="action_page.php">
+              <input type="text" placeholder="Search..." name="search" />
+              <button type="submit">
+                <i className="fa fa-search"></i>
+              </button>
+            </form>
+          </div>
         </div>
 
-        <div className="nav-center">
-          <Logo>LAMA.</Logo>
-        </div>
         <div className="nav-right">
           <div className="nav-register">
-            <Link>REGISTER</Link>
+            <Link to="/register">REGISTER</Link>
           </div>
           <div className="nav-sign">
-            <Link>SIGN IN</Link>
+            <Link to="/signIn">SIGN IN</Link>
           </div>
-          <MenuItem>
+          {/* <MenuItem>
             <ShoppingCartRounded />
-          </MenuItem>
+          </MenuItem> */}
         </div>
       </div>
     </div>
