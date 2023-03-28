@@ -37,3 +37,37 @@
     transform: rotate(360deg);
   }
 }
+
+/* NAV BAR STYLING */
+
+.nav-container {
+  height: 60px;
+  /* mobile height: 50px; */
+}
+
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  /* mobile padding 10px 0px */
+}
+
+.nav-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.nav-center {
+  flex: 1;
+  text-align: center;
+}
+
+.nav-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  /* mobile flex 2, justify content center; */
+}

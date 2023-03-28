@@ -1,27 +1,7 @@
-import React from 'react'
+import { Search, ShoppingCartRounded } from '@material-ui/icons'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded'
 
-const Container = styled.div`
-  height: 60px;
-  color: black;
-  background-color: rgba(255, 228, 214, 0.9);
-`
-const Wrapper = styled.div`
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`
-const Left = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
-`
-const Language = styled.span`
-  font-size: 14px;
-  cursor: pointer;
-`
 const SearchContainer = styled.div`
   border: 0.5px solid lightgray;
   display: flex;
@@ -30,33 +10,48 @@ const SearchContainer = styled.div`
   padding: 5px;
 `
 
-const Center = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
+const Input = styled.input`
+  border: none;
 `
 
-const Right = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
+const Logo = styled.h1`
+  font-weight: bold;
 `
 
-const NavBar = () => {
+const MenuItem = styled.div`
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 25px;
+`
+
+const Navbar = () => {
   return (
-    <Container>
-      <Wrapper>
-        <Left>
-          <Language>EN</Language>
+    <div className="nav-container">
+      <div className="nav-wrapper">
+        <div className="nav-left">
           <SearchContainer>
-            <SearchRoundedIcon></SearchRoundedIcon>
+            <Input placeholder="Search" />
+            <Search style={{ color: 'gray', fontSize: 16 }} />
           </SearchContainer>
-        </Left>
-        <Center>CENTER</Center>
-        <Right>RIGHT</Right>
-      </Wrapper>
-    </Container>
+        </div>
+
+        <div className="nav-center">
+          <Logo>LAMA.</Logo>
+        </div>
+        <div className="nav-right">
+          <div className="nav-register">
+            <Link>REGISTER</Link>
+          </div>
+          <div className="nav-sign">
+            <Link>SIGN IN</Link>
+          </div>
+          <MenuItem>
+            <ShoppingCartRounded />
+          </MenuItem>
+        </div>
+      </div>
+    </div>
   )
 }
 
-export default NavBar
+export default Navbar
