@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react'
-// import Axios from 'axios'
 import './App.css'
 import NavBar from './components/NavBar'
 import ReviewForm from './components/ReviewForm'
 import Home from './pages/Home'
 import About from './pages/About'
-// import Client from './services/api'
 import Register from './pages/Register'
 import SignIn from './pages/SignIn'
 import { Route, Routes } from 'react-router'
@@ -13,6 +11,7 @@ import { CheckSession } from './services/User'
 
 const App = () => {
   const [user, setUser] = useState(null)
+  const [products, setProducts] = useState([])
 
   // const handleLogOut = () => {
   //   setUser(null)

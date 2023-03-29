@@ -29,14 +29,14 @@
   color: rgba(255, 228, 214, 0.8);
 }
 
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 /* NAV BAR STYLING */
 
@@ -61,6 +61,11 @@
 
 .nav-center {
   flex: 1;
+  display: flex;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 25px;
+  align-items: center;
   text-align: center;
 }
 
@@ -73,17 +78,10 @@
 }
 
 .nav-register .nav-sign {
+  flex: 1;
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
-}
-
-.nav-search {
-  border: 0.5px solid lightgray;
-  display: flex;
-  align-items: center;
-  margin-left: 25px;
-  padding: 5px;
 }
 
 /* SEARCH FORM CSS */
@@ -91,8 +89,7 @@
   box-sizing: border-box;
 }
 
-/* Style the search field */
-form.example input[type='text'] {
+.example input[type='text'] {
   padding: 10px;
   font-size: 17px;
   border: 1px solid grey;
@@ -102,7 +99,7 @@ form.example input[type='text'] {
 }
 
 /* Style the submit button */
-form.example button {
+.example button {
   float: left;
   width: 20%;
   padding: 10px;
@@ -114,12 +111,12 @@ form.example button {
   cursor: pointer;
 }
 
-form.example button:hover {
+.example button:hover {
   background: #0b7dda;
 }
 
 /* Clear floats */
-form.example::after {
+.example::after {
   content: '';
   clear: both;
   display: table;
