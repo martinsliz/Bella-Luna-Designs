@@ -6,9 +6,10 @@ const ProductDetails = (props) => {
       <div className="img-wrapper">
         <img alt="" src={props.image} />
         <div className="product-info">
-          <h3>{props.name}</h3>
-          <h3>{props.price}</h3>
-          <h3>{props.description}</h3>
+          <h3>Name: {props.name}</h3>
+          <h3>Price: ${props.price}</h3>
+          <h3>Details: {props.description}</h3>
+          {/* <p>Reviews: {props.reviews.content}</p> */}
         </div>
       </div>
       <div>

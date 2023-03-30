@@ -1,12 +1,14 @@
-import { Link, useNavigate } from 'react-router-dom'
+// import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import Client from '../services/api'
 import ProductCard from '../components/ProductCard'
 
 const AllProducts = () => {
-  let navigate = useNavigate()
+  // let navigate = useNavigate()
   const [allProducts, setAllProducts] = useState([])
   const [reviews, setReviews] = useState([])
+  const [order, setOrder] = useState([])
+  const [status, toggleStatus] = useState(false)
 
   const getAllProducts = async () => {
     const response = await Client.get(`/api/products`)
@@ -20,34 +22,17 @@ const AllProducts = () => {
     getAllProducts()
   }, [])
 
+  const addToCart = () => {}
+
   return (
-    <div className="container">
-      {allProducts.map((product) => (
-        <ProductCard
-          key={product.id}
-          image={product.image}
-          name={product.name}
-          price={product.price}
-          description={product.description}
-          category={product.category}
-          reviews={product.reviews}
-        />
-      ))}
+    <div className="product-container">
+      <div className="allProducts">
+        {allProducts.map((product) => (
+          <ProductCard {...product} key={product.id} />
+        ))}
+      </div>
     </div>
   )
 }
 
 export default AllProducts
-
-{
-  /* <Link to={`details${product.id}`}>
-          <div className="all" key={product.id}>
-            <img alt="" src={product.image} />
-            <h3>name={product.name}</h3>
-            <h4>price={product.price}</h4>
-            <p>description={product.description}</p>
-            category={product.category}
-            reviews={product.reviews}
-          </div>
-        </Link> */
-}

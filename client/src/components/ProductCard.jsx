@@ -1,20 +1,21 @@
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const ProductCard = (props) => {
-  let navigate = useNavigate()
+  // let navigate = useNavigate()
+  // const { id } = useParams()
 
   return (
     <div className="product-card">
-      <div className="img-wrapper">
-        <img alt="" src={props.image} />
-        <div className="product-info">
-          <h3>{props.name}</h3>
-          <h3>${props.price}</h3>
-          <h3>{props.description}</h3>
+      <Link to={`/products/${props.id}`}>
+        <div className="info-wrapper">
+          <img alt="" src={props.image} />
+          <div className="product-info">
+            <h3>{props.name}</h3>
+            <h3>Price: ${props.price}</h3>
+          </div>
         </div>
-      </div>
-      <div></div>
-      <button onClick={() => navigate('/details')}>Add to Cart</button>
+      </Link>
+      <button>Add to Cart</button>
     </div>
   )
 }
