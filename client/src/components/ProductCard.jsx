@@ -12,6 +12,7 @@ const ProductCard = (props) => {
           <div className="product-info">
             <h3>{props.name}</h3>
             <h3>Price: ${props.price}</h3>
+            {/* <p>{props.reviews}</p> */}
           </div>
         </div>
       </Link>

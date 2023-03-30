@@ -3,12 +3,12 @@ import { useState, useEffect } from 'react'
 import Client from '../services/api'
 import ProductCard from '../components/ProductCard'
 
-const AllProducts = () => {
+const AllProducts = ({ allProducts, setAllProducts, reviews, setReviews }) => {
   // let navigate = useNavigate()
-  const [allProducts, setAllProducts] = useState([])
-  const [reviews, setReviews] = useState([])
+  // const [allProducts, setAllProducts] = useState([])
+  // const [reviews, setReviews] = useState([])
   const [order, setOrder] = useState([])
-  const [status, toggleStatus] = useState(false)
+  const [status, toggleStatus] = useState(true)
 
   const getAllProducts = async () => {
     const response = await Client.get(`/api/products`)
