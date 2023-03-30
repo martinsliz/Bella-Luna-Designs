@@ -13,9 +13,8 @@ const ProductCard = (props) => {
           <h3>{props.description}</h3>
         </div>
       </div>
-      <div>
-        <button onClick={() => navigate('/details')}>Start Shopping!</button>
-      </div>
+      <div></div>
+      <button onClick={() => navigate('/details')}>Add to Cart</button>
     </div>
   )
 }
