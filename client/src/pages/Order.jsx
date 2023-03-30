@@ -1,5 +1,8 @@
-const Order = () => {
-  return <div>Order</div>
-}
+// import { useState, useEffect } from 'react'
 
-export default Order
+// const Order = () => {
+//   const [order, setOrder] = useState([])
+//   return <div>Order</div>
+// }
+
+// export default Order

@@ -1,19 +1,21 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+
 const ProductCard = (props) => {
+  let navigate = useNavigate()
+
   return (
     <div className="product-card">
       <div className="img-wrapper">
         <img alt="" src={props.image} />
+        <div className="product-info">
+          <h3>{props.name}</h3>
+          <h3>${props.price}</h3>
+          <h3>{props.description}</h3>
+        </div>
       </div>
-      <div className="info-wrapper flex-col">
-        <h3>{props.name}</h3>
-        <p>Rating: {props.rating}</p>
+      <div>
+        <button onClick={() => navigate('/details')}>Start Shopping!</button>
       </div>
-      {/* <button onClick={() => props.onClick=(props.gameId)}>More</button> */}
-      <Link to="/product/details/:productId" className="details">
-        More
-      </Link>
-      {/* <Route path="/games/details/:gameId" element={<GameDetails />} /> */}
     </div>
   )
 }

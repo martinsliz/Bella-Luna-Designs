@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+// import Client from './services/api'
 import NavBar from './components/NavBar'
 import ReviewForm from './components/ReviewForm'
+import AllProducts from './pages/AllProducts'
+import ProductDetails from './pages/ProductDetails'
 import Home from './pages/Home'
 import About from './pages/About'
 import Register from './pages/Register'
@@ -11,50 +14,44 @@ import { CheckSession } from './services/User'
 
 const App = () => {
   const [user, setUser] = useState(null)
-  const [products, setProducts] = useState([])
-
-  // const handleLogOut = () => {
-  //   setUser(null)
-  //   localStorage.clear()
-  // }
 
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
   }
 
+  // const getProducts = async () => {
+  //   const response = Client.get(`/api/products`)
+  //   console.log('HELLO')
+  //   console.log(response.data)
+  //   setProducts(response.data)
+  //   let reviews = response.data.reviews
+  //   setReviews(reviews)
+  // }
+
   useEffect(() => {
     const token = localStorage.getItem('token')
-
     if (token) {
       checkToken()
     }
+    // getProducts()
   }, [])
-
-  // const [account, setAccount] = useState({})
-
-  // useEffect(() => {
-  //   if (user) {
-  //     const handleAccount = async () => {
-  //       const data = await Client.get(`/api/users/info/${user.id}`)
-  //       setAccount(data.data)
-  //     }
-  //     handleAccount()
-  //   }
-  // }, [user, setAccount])
 
   return (
     <div className="App">
-      <NavBar />
-      {/* <Nav user={user} handleLogOut={handleLogOut} /> */}
+      <div>
+        <NavBar />
+      </div>
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/signIn" element={<SignIn setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/allProducts" element={<AllProducts />} />
+          <Route path="/details" element={<ProductDetails />} />
           <Route
-            path="/form/:userId/:classId"
+            path="/form/:userId/:productId"
             element={<ReviewForm user={user} />}
           />
         </Routes>
