@@ -8,7 +8,6 @@ const Home = () => {
   let navigate = useNavigate()
   const [products, setProducts] = useState([])
   const [mainPhoto, setMainPhoto] = useState({})
-  const [reviews, setReviews] = useState([])
   const [searchResults, setSearchResults] = useState([])
   const [searched, toggleSearched] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
@@ -34,8 +33,6 @@ const Home = () => {
     let coverPhoto =
       response.data[Math.floor(Math.random() * response.data.length)]
     setMainPhoto(coverPhoto)
-    let reviews = response.data.reviews
-    setReviews(reviews)
   }
 
   useEffect(() => {

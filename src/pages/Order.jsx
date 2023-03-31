@@ -1,8 +1,15 @@
-// import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 
-// const Order = () => {
-//   const [order, setOrder] = useState([])
-//   return <div>Order</div>
-// }
+const Order = () => {
+  let { id } = useParams()
+  let navigate = useNavigate()
+  return
+  ;<div>
+    <div>
+      <h2>Your Cart</h2>
+    </div>
+  </div>
+}
 
-// export default Order
+export default Order

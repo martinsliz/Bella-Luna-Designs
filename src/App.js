@@ -11,6 +11,7 @@ import Register from './pages/Register'
 import SignIn from './pages/SignIn'
 import { Route, Routes } from 'react-router'
 import { CheckSession } from './services/User'
+import Order from './pages/Order'
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -24,22 +25,18 @@ const App = () => {
 
   const getAllProducts = async () => {
     const response = await Client.get(`/api/products`)
-    console.log(response.data)
+    // console.log(response.data)
     setAllProducts(response.data)
     let reviews = response.data.reviews
     setReviews(reviews)
   }
 
   useEffect(() => {
-    getAllProducts()
-  }, [])
-
-  useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
       checkToken()
     }
-    // getProducts()
+    getAllProducts()
   }, [])
 
   return (
@@ -68,6 +65,7 @@ const App = () => {
             path="/products/:id"
             element={<ProductDetails allProducts={allProducts} />}
           />
+          <Route path="/order" element={<Order />} />
           <Route
             path="/form/:userId/:productId"
             element={<ReviewForm user={user} />}

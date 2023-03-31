@@ -1,12 +1,17 @@
-// import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 
 const ProductDetails = ({ allProducts }) => {
   let { id } = useParams()
-  console.log(typeof id)
+  let navigate = useNavigate()
+  let itemCount = 0
+  let totalAmount = 0
+  let view = document.getElementById('viewCart')
+  const [cart, setCart] = useState([])
   const [details, setDetails] = useState()
-  console.log(allProducts)
+  const [order, setOrder] = useState([])
+  const [open, setOpen] = useState(true)
+  // console.log(allProducts)
   const result = allProducts.filter((product) => product.id === parseInt(id))
 
   const reviews = result[0]?.reviews.map((review, index) => {
@@ -15,6 +20,18 @@ const ProductDetails = ({ allProducts }) => {
   useEffect(() => {
     setDetails(result)
   }, [allProducts])
+
+  const addToCart = (result[0]) => {
+    let newCart = cart
+    newCart.push(result[0])
+    console.log(newCart)
+    setCart(newCart)
+    itemCount += 1
+    console.log(cartCount)
+    if (itemCount >= 1) {
+      view.innerHTML = <Link to="/orders">View Cart</Link>
+    }
+  }
 
   return (
     <div className="product-card">
@@ -30,7 +47,15 @@ const ProductDetails = ({ allProducts }) => {
         </div>
       )}
       <div>
-        <button>Add to Cart</button>
+        <button onClick={() => navigate('/allProducts')}>
+          Continue Shopping
+        </button>
+        <button type="submit" onClick={() => addToCart(result)}>
+          Add to Cart
+        </button>
+      </div>
+      <div>
+        <h4 id="viewCart"></h4>
       </div>
     </div>
   )

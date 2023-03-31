@@ -16,7 +16,6 @@ const ProductCard = (props) => {
           </div>
         </div>
       </Link>
-      <button>Add to Cart</button>
     </div>
   )
 }
