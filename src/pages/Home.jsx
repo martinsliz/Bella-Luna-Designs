@@ -47,14 +47,14 @@ const Home = () => {
         value={searchQuery}
       />
       {searched ? (
-        <div className="search">
+        <div className="search-bar">
           <h2>Search Results</h2>
 
-          <section className="search-results container-grid">
+          <section className="search-results">
             {searchResults.map((result) => (
               <Link to={`/productDetails/${result.id}`} key={result.id}>
                 <div>
-                  <img alt="" src={result.image} />
+                  <img alt={result.name} src={result.image} />
                   <h3>{result.name}</h3>
                   <p>${result.price}</p>
                   <p>{result.description}</p>
@@ -64,9 +64,13 @@ const Home = () => {
           </section>
         </div>
       ) : (
-        <section className="container-grid">
+        <section className="cover-container">
           <Link to="/allProducts">
-            <img className="coverImage" src={mainPhoto.image} alt="Cover" />
+            <img
+              className="coverImage"
+              src={mainPhoto.image}
+              alt={mainPhoto.name}
+            />
           </Link>
           <button onClick={() => navigate('/allProducts')}>
             SHOP BELLA LUNA

@@ -1,15 +1,19 @@
-import { useEffect, useState } from 'react'
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import React from 'react'
 
-const Order = () => {
-  let { id } = useParams()
-  let navigate = useNavigate()
-  return
-  ;<div>
+const Order = ({ cart, setCart }) => {
+  return (
     <div>
-      <h2>Your Cart</h2>
+      <h3>Your Cart</h3>
+      <div>
+        {cart.map((item) => (
+          <div className="cart-items" key={item.id}>
+            <img alt={item.name} src={item.image} />
+            console.log(item)
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
+  )
 }
 
 export default Order

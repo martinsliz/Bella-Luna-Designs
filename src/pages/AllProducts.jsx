@@ -1,4 +1,3 @@
-import Client from '../services/api'
 import ProductCard from '../components/ProductCard'
 
 const AllProducts = ({ allProducts, setAllProducts, reviews, setReviews }) => {

@@ -1,32 +1,28 @@
+import Client from '../services/api'
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import Client from '../services/api'
 
-const PostReview = ({ user }) => {
-  let navigate = useNavigate()
-  const { userId } = useParams()
-  const { productId } = useParams()
-
+const ReviewForm = () => {
+  let { productId } = useParams()
   const initialState = {
     content: ''
   }
-  const [createReview, setCreateReview] = useState(initialState)
+  const [review, setReview] = useState(initialState)
+
+  let navigate = useNavigate()
 
   const handleChange = (event) => {
-    setCreateReview({
-      ...createReview,
-      [event.target.id]: event.target.value
-    })
+    setReview({ ...review, [event.target.id]: event.target.value })
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    await Client.post(`/api/reviews/${userId}/${productId}`, createReview)
-    setCreateReview(initialState)
-    navigate(`/productDetails/${productId}/`)
+    await Client.post(`/api/reviews/${productId}`, review)
+    setReview(initialState)
+    navigate(`/products/${productId}/`)
   }
 
-  return user ? (
+  return (
     <div className="reviewContainer">
       <div className="formBox">
         <form onSubmit={handleSubmit}>
@@ -38,22 +34,17 @@ const PostReview = ({ user }) => {
             placeholder="Leave review here"
             id="content"
             onChange={handleChange}
-            value={createReview.content}
+            value={review.content}
           ></textarea>
           <div>
             <button className="formSubmit-btn" type="submit">
-              Send
+              Submit
             </button>
           </div>
         </form>
       </div>
     </div>
-  ) : (
-    <div className="protected">
-      <h3>Oops! You must be signed in to do that!</h3>
-      <button onClick={() => navigate('/signIn')}>Sign In</button>
-    </div>
   )
 }
 
-export default PostReview
+export default ReviewForm

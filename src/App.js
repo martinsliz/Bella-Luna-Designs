@@ -17,6 +17,7 @@ const App = () => {
   const [user, setUser] = useState(null)
   const [allProducts, setAllProducts] = useState([])
   const [reviews, setReviews] = useState([])
+  const [cart, setCart] = useState([])
 
   const checkToken = async () => {
     const user = await CheckSession()
@@ -63,13 +64,16 @@ const App = () => {
           />
           <Route
             path="/products/:id"
-            element={<ProductDetails allProducts={allProducts} />}
+            element={
+              <ProductDetails
+                allProducts={allProducts}
+                cart={cart}
+                setCart={setCart}
+              />
+            }
           />
-          <Route path="/order" element={<Order />} />
-          <Route
-            path="/form/:userId/:productId"
-            element={<ReviewForm user={user} />}
-          />
+          <Route path="/order" element={<Order cart={cart} />} />
+          <Route path="/form/:productId" element={<ReviewForm />} />
         </Routes>
       </main>
     </div>
