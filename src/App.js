@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
-import './App.css'
+import './styles.css'
 import Client from './services/api'
 import NavBar from './components/NavBar'
 import ReviewForm from './components/ReviewForm'
+import UpdateReview from './components/UpdateReview'
 import AllProducts from './pages/AllProducts'
 import ProductDetails from './pages/ProductDetails'
 import Home from './pages/Home'
@@ -26,10 +27,14 @@ const App = () => {
 
   const getAllProducts = async () => {
     const response = await Client.get(`/api/products`)
-    // console.log(response.data)
     setAllProducts(response.data)
     let reviews = response.data.reviews
     setReviews(reviews)
+  }
+
+  const handleLogOut = () => {
+    setUser(null)
+    localStorage.clear()
   }
 
   useEffect(() => {
@@ -72,8 +77,18 @@ const App = () => {
               />
             }
           />
-          <Route path="/order" element={<Order cart={cart} />} />
-          <Route path="/form/:productId" element={<ReviewForm />} />
+          <Route
+            path="/order"
+            element={<Order cart={cart} setCart={setCart} />}
+          />
+          <Route
+            path="/form/:userId/:productId"
+            element={<ReviewForm user={user} />}
+          />
+          <Route
+            path="/form/:userId/:productId/:id"
+            element={<UpdateReview user={user} />}
+          />
         </Routes>
       </main>
     </div>

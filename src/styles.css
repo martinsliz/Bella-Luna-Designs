@@ -1,6 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /* HOME PAGE */
 
-.search-bar {
+/* .search-bar {
 }
 
 .search-results {
@@ -20,20 +23,20 @@
 
 /* NAV BAR STYLING */
 
-.nav-container {
-  height: 60px;
-  /* mobile height: 50px; */
-}
+/* .nav-container { */
+/* height: 60px; */
+/* mobile height: 50px; */
+/* } */
 
-.nav-wrapper {
+/* .nav-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
-  /* mobile padding 10px 0px */
-}
+  padding: 10px 20px; */
+/* mobile padding 10px 0px */
+/* } */
 
-.nav-left {
+/* .nav-left {
   flex: 1;
   display: flex;
   align-items: center;
@@ -53,13 +56,13 @@
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  /* mobile flex 2, justify content center; */
-}
+  justify-content: flex-end; */
+/* mobile flex 2, justify content center; */
+/* } */
 
-.nav-register .nav-sign {
+/* .nav-register .nav-sign {
   flex: 1;
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
-}
+} */

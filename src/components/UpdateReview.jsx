@@ -1,24 +1,28 @@
-import Client from '../services/api'
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import Client from '../services/api'
 
-const ReviewForm = ({ user }) => {
+const UpdateReview = ({ user }) => {
   let navigate = useNavigate()
-  const { userId } = useParams()
-  let { productId } = useParams()
+  const { productId } = useParams()
+  const { id } = useParams()
+
   const initialState = {
     content: ''
   }
-  const [review, setReview] = useState(initialState)
+  const [updateReview, setUpdateReview] = useState(initialState)
 
   const handleChange = (event) => {
-    setReview({ ...review, [event.target.id]: event.target.value })
+    setUpdateReview({
+      ...updateReview,
+      [event.target.id]: event.target.value
+    })
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    await Client.post(`/api/reviews/${productId}`, review)
-    setReview(initialState)
+    await Client.put(`/api/reviews/${id}`, updateReview)
+    setUpdateReview(initialState)
     navigate(`/products/${productId}/`)
   }
 
@@ -26,7 +30,7 @@ const ReviewForm = ({ user }) => {
     <div className="reviewContainer">
       <div className="formBox">
         <form onSubmit={handleSubmit}>
-          <h2>Post a review!</h2>
+          <h2>Update</h2>
           <label htmlFor="content"></label>
           <textarea
             cols="40"
@@ -34,11 +38,11 @@ const ReviewForm = ({ user }) => {
             placeholder="Leave review here"
             id="content"
             onChange={handleChange}
-            value={review.content}
+            value={updateReview.content}
           ></textarea>
           <div>
             <button className="formSubmit-btn" type="submit">
-              Submit
+              Send
             </button>
           </div>
         </form>
@@ -46,10 +50,10 @@ const ReviewForm = ({ user }) => {
     </div>
   ) : (
     <div className="protected">
-      <h3>Please sign in to post a review</h3>
-      <button onClick={() => navigate('/signIn')}>Sign In</button>
+      <h3>Please sign in to update your review</h3>
+      <button onClick={() => navigate('/sigIn')}>Sign In</button>
     </div>
   )
 }
 
-export default ReviewForm
+export default UpdateReview

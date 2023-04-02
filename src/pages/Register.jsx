@@ -24,6 +24,7 @@ const Register = () => {
       firstName: formValues.firstName,
       lastName: formValues.lastName,
       email: formValues.email,
+      address: formValues.address,
       password: formValues.password
     })
     setFormValues(initialState)
@@ -35,7 +36,7 @@ const Register = () => {
       <div className="card-overlay centered">
         <form className="col" onSubmit={handleSubmit}>
           <div className="input-wrapper">
-            <label htmlFor="firstName">First Name</label>
+            <label htmlFor="firstName">First Name: </label>
             <input
               onChange={handleChange}
               name="firstName"
@@ -46,7 +47,7 @@ const Register = () => {
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="lastName">Last Name</label>
+            <label htmlFor="lastName">Last Name: </label>
             <input
               onChange={handleChange}
               name="lastName"
@@ -57,7 +58,7 @@ const Register = () => {
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email: </label>
             <input
               onChange={handleChange}
               name="email"
@@ -67,9 +68,20 @@ const Register = () => {
               required
             />
           </div>
+          <div className="input-wrapper">
+            <label htmlFor="address">Address: </label>
+            <input
+              onChange={handleChange}
+              name="address"
+              type="text"
+              placeholder="123 Main Street"
+              value={formValues.address}
+              required
+            />
+          </div>
 
           <div className="input-wrapper">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Password: </label>
             <input
               onChange={handleChange}
               type="password"
@@ -79,7 +91,7 @@ const Register = () => {
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="confirmPassword">Confirm Password</label>
+            <label htmlFor="confirmPassword">Confirm Password: </label>
             <input
               onChange={handleChange}
               type="password"
