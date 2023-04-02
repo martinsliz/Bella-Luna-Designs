@@ -2,9 +2,9 @@ import { XMarkIcon } from '@heroicons/react/20/solid'
 
 const Order = ({ cart, setCart }) => {
   const totalPrice = cart.reduce((acc, item) => acc + item[0].price, 0)
-  const deleteItem = () => {
-    cart.pop(item[0])
-  }
+  // const deleteItem = () => {
+  //   cart.pop(item[0])
+  // }
   console.log('items below')
   console.log(cart)
   console.log('price')
@@ -80,7 +80,7 @@ const Order = ({ cart, setCart }) => {
 
                       <div className="absolute right-0 top-0">
                         <button
-                          onClick={() => deleteItem()}
+                          // onClick={() => deleteItem()}
                           type="button"
                           className="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500"
                         >
@@ -117,12 +117,12 @@ const Order = ({ cart, setCart }) => {
               >
                 Continue Shopping
               </button>
-              <button
+              {/* <button
                 type="submit"
                 className="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
               >
                 Checkout
-              </button>
+              </button> */}
             </div>
           </section>
         </form>

@@ -20,6 +20,11 @@ const App = () => {
   const [reviews, setReviews] = useState([])
   const [cart, setCart] = useState([])
 
+  const handleLogOut = () => {
+    setUser(null)
+    localStorage.clear()
+  }
+
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
@@ -30,11 +35,6 @@ const App = () => {
     setAllProducts(response.data)
     let reviews = response.data.reviews
     setReviews(reviews)
-  }
-
-  const handleLogOut = () => {
-    setUser(null)
-    localStorage.clear()
   }
 
   useEffect(() => {
@@ -48,7 +48,7 @@ const App = () => {
   return (
     <div className="App">
       <div>
-        <NavBar />
+        <NavBar user={user} handleLogOut={handleLogOut} />
       </div>
       <main>
         <Routes>

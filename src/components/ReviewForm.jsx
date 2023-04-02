@@ -3,9 +3,12 @@ import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 const ReviewForm = ({ user }) => {
+  let { id } = useParams
   let navigate = useNavigate()
-  const { userId } = useParams()
-  let { productId } = useParams()
+  const [productId, setProductId] = useState(id)
+  // const user = localStorage.getItem('userId')
+  // const { userId } = useParams()
+  // let { productId } = useParams()
   const initialState = {
     content: ''
   }

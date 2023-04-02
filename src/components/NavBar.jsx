@@ -21,11 +21,11 @@ const Navbar = ({ user, handleLogOut }) => {
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img
+              {/* <img
                 className="h-8 w-auto"
                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                 alt=""
-              />
+              /> */}
             </a>
           </div>
           <div className="flex lg:hidden">
@@ -45,14 +45,27 @@ const Navbar = ({ user, handleLogOut }) => {
             <Link to="/about">ABOUT</Link>
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end text-sm font-semibold leading-6 text-gray-900">
-            <Link to="/signIn">SIGN IN</Link>
+            {/* <Link to="/signIn">SIGN IN</Link> */}
+            {user ? (
+              <button
+                onClick={() => handleLogOut()}
+                type="button"
+                className="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+              >
+                SIGN OUT
+              </button>
+            ) : (
+              <Link to="/signIn">SIGN IN</Link>
+            )}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end text-sm font-semibold leading-6 text-gray-900">
             <Link to="/register">REGISTER</Link>
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end text-sm font-semibold leading-6 text-gray-900">
             <Link to="/order">
-              <ShoppingBagIcon />
+              <span>
+                <ShoppingBagIcon />
+              </span>
             </Link>
           </div>
         </nav>
