@@ -1,7 +1,3 @@
-import AllProducts from './src/pages/AllProducts'
-import Order from './src/pages/Order'
-import Navbar from './src/components/NavBar'
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [

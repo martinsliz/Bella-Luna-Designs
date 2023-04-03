@@ -1,6 +1,5 @@
 import Client from '../services/api'
-import { Link, useNavigate } from 'react-router-dom'
-// import Search from '../components/Search'
+import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 const Home = () => {
@@ -37,36 +36,36 @@ const Home = () => {
           />
         </div>
         <div className="py-24 sm:py-32 lg:pb-40">
+          <div className="mx-auto max-w-2xl text-center">
+            <h1 className="text-4xl font-bold font-Castoro tracking-tight text-gray-800 sm:text-6xl">
+              Bella Luna Designs
+            </h1>
+            <h3 className="mt-6 text-lg leading-8 text-gray-700 font-Castoro">
+              Beautiful Hand-crafted jewelry made in Massachusetts.
+            </h3>
+          </div>
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl text-center">
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                Bella Luna Designs
-              </h1>
-              <p className="mt-6 text-lg leading-8 text-gray-600">
-                Beautiful Hand-crafted jewelry made in Massachusetts.
-              </p>
-            </div>
-            <div className="">
+            <div className="mt-10 flex items-center justify-center gap-x-6">
               <div className="-m-2 rounded-l bg-gray-700/5 p-2 ring-1 ring-inset ring-gray-700/10 lg:-m-4 lg:rounded-2xl lg:p-4">
                 <img
                   onClick={() => navigate('/allProducts')}
                   width={500}
                   height={500}
-                  className="rounded-md shadow-2xl ring-1 ring-gray-900/10"
+                  className="cursor-pointer rounded-md shadow-2xl ring-1 ring-gray-900/10"
                   alt={mainPhoto.name}
                   src={mainPhoto.image}
                 />
               </div>
-              <div className="mt-10 flex items-center justify-center gap-x-6">
-                <button
-                  className="rounded-lg bg-indigo-700/75 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  onClick={() => navigate('/allProducts')}
-                >
-                  SHOP ALL BELLA LUNA
-                </button>
-              </div>
             </div>
           </div>
+        </div>
+        <div className="flex items-center justify-center">
+          <button
+            className="font-Castoro rounded-lg bg-indigo-700/75 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            onClick={() => navigate('/allProducts')}
+          >
+            SHOP ALL BELLA LUNA
+          </button>
         </div>
         <div
           className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"

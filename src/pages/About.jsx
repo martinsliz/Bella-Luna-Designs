@@ -21,10 +21,10 @@ const About = () => {
     <div className="bg-white py-24 md:py-32">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-5">
         <div className="max-w-2xl xl:col-span-2">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h2 className="font-Castoro text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             About Us
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
+          <p className="font-Castoro mt-6 text-lg leading-8 text-gray-600">
             Bella Luna Designs was created about five years ago as a hobby and
             has become a successful small business. Thanks so much for visiting!
           </p>
@@ -36,7 +36,7 @@ const About = () => {
           {people.map((person) => (
             <li
               key={person.name}
-              className="flex flex-col gap-10 pt-12 sm:flex-row"
+              className="font-Castoro flex flex-col gap-10 pt-12 sm:flex-row"
             >
               <img
                 className="aspect-[4/5] w-52 flex-none rounded-2xl object-cover"

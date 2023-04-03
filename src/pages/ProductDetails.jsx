@@ -41,7 +41,7 @@ const ProductDetails = ({ allProducts, cart, setCart }) => {
 
   return (
     <>
-      <div className="bg-white">
+      <div className="bg-gradient-to-br from-rose-100 to-teal-100">
         <div className="relative isolate pt-14">
           <div
             className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -67,7 +67,7 @@ const ProductDetails = ({ allProducts, cart, setCart }) => {
                 <p>${productDetails.price}</p>
               </div>
               <div className="mt-16 flow-root sm:mt-24">
-                <div className="-m-2 rounded-l bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
+                <div className="-m-2 flex items-center justify-center rounded-l bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
                   <img
                     width={900}
                     height={100}
@@ -77,12 +77,12 @@ const ProductDetails = ({ allProducts, cart, setCart }) => {
                   />
                 </div>
                 {/* REVIEWS */}
-                <div className="bg-white">
+                <div className="relative top-10px -m-2 rounded-l">
                   <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
                     <h2 className="text-lg font-medium text-gray-900">
                       Reviews:
                     </h2>
-                    <div className="mt-6 space-y-10 divide-y border-b border-t border-black pb-10">
+                    <div className="mt-6 space-y-10 border-black pb-10">
                       <div className="lg:col-span-8 lg:col-start-5 xl:col-span-9 xl:col-start-4 xl:grid xl:grid-cols-3 xl:items-start xl:gap-x-8">
                         <div className="mt-4 lg:mt-6 xl:col-span-2 xl:mt-0">
                           <div className="mt-3 space-y-6 text-sm text-gray-500" />
@@ -95,12 +95,9 @@ const ProductDetails = ({ allProducts, cart, setCart }) => {
                                 deleteReview={deleteReview}
                               />
                             ))}
-                          <div></div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div>
                     <button
                       onClick={() => navigate(`/form/${user}/${productId}`)}
                       type="button"
@@ -120,7 +117,7 @@ const ProductDetails = ({ allProducts, cart, setCart }) => {
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <button
                   onClick={() => addToCart(result)}
-                  className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="rounded-lg bg-indigo-700/75 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Add to Cart
                 </button>
@@ -129,7 +126,7 @@ const ProductDetails = ({ allProducts, cart, setCart }) => {
                 <button
                   onClick={() => navigate('/allProducts')}
                   type="submit"
-                  className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="rounded-lg bg-indigo-700/75 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Continue Shopping
                 </button>

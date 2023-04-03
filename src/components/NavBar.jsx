@@ -29,10 +29,10 @@ const Navbar = ({ user, handleLogOut }) => {
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end text-sm font-semibold leading-6 text-gray-900">
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end text-sm font-Castoro font-semibold leading-6 text-gray-900">
             <Link to="/">HOME</Link>
           </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end text-sm font-semibold leading-6 text-gray-900">
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end text-sm font-Castoro font-semibold leading-6 text-gray-900">
             <Link to="/about">ABOUT</Link>
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end text-sm font-semibold leading-6 text-gray-900">
@@ -41,7 +41,7 @@ const Navbar = ({ user, handleLogOut }) => {
               <button
                 onClick={() => handleLogOut()}
                 type="button"
-                className="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                className="rounded bg-white px-2 py-1 text-xs font-Castoro font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
               >
                 SIGN OUT
               </button>
@@ -49,10 +49,10 @@ const Navbar = ({ user, handleLogOut }) => {
               <Link to="/signIn">SIGN IN</Link>
             )}
           </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end text-sm font-semibold leading-6 text-gray-900">
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end text-sm font-Castoro font-semibold leading-6 text-gray-900">
             <Link to="/register">REGISTER</Link>
           </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end text-sm font-semibold leading-6 text-gray-900">
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end text-sm font-Castoro font-semibold leading-6 text-gray-900">
             <Link to="/order">
               <span>
                 <ShoppingBagIcon />
