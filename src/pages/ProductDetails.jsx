@@ -19,10 +19,10 @@ const ProductDetails = ({ allProducts, cart, setCart }) => {
   useEffect(() => {
     const getProductDetails = async () => {
       const response = await Client.get(`/api/products/${id}`)
-      console.log(response)
+      console.log(response.data)
       setProductDetails(response.data)
       let reviews = response.data.reviews
-      console.log(reviews)
+      console.log(response.data.reviews[0].id)
       console.log('Reviews')
       console.log(reviews[0].content)
       setReviews(reviews)
@@ -93,14 +93,21 @@ const ProductDetails = ({ allProducts, cart, setCart }) => {
                           <div className="mt-3 space-y-6 text-sm text-gray-500" />
                           {reviews &&
                             reviews.map((review) => (
-                              <ReviewDisplay {...review} key={review.id} />
+                              <ReviewDisplay
+                                productId={productId}
+                                review={review}
+                                key={review.id}
+                                deleteReview={deleteReview}
+                              />
                             ))}
                           <div>
                             {{ reviews } ? (
                               <>
-                                <button
+                                {/* <button
                                   onClick={() =>
-                                    navigate(`/form/${reviews.id}`)
+                                    navigate(
+                                      `/form/${productId}/${reviews[0].id}`
+                                    )
                                   }
                                   type="button"
                                   className="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
@@ -113,7 +120,7 @@ const ProductDetails = ({ allProducts, cart, setCart }) => {
                                   className="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                                 >
                                   Delete
-                                </button>
+                                </button> */}
                               </>
                             ) : (
                               <h4></h4>

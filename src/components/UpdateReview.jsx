@@ -2,11 +2,10 @@ import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Client from '../services/api'
 
-const UpdateReview = () => {
+const UpdateReview = ({ reviews, setReviews }) => {
   const user = localStorage.getItem('userId')
+  let { reviewId, productId } = useParams()
   let navigate = useNavigate()
-  const { id } = useParams()
-  const { productId } = useParams()
 
   const initialState = {
     content: ''
@@ -22,7 +21,7 @@ const UpdateReview = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    await Client.put(`/api/reviews/${id}`, updateReview)
+    await Client.put(`/api/reviews/${reviewId}`, updateReview)
     setUpdateReview(initialState)
     navigate(`/products/${productId}/`)
   }

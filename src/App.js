@@ -86,8 +86,14 @@ const App = () => {
             element={<ReviewForm user={user} />}
           />
           <Route
-            path="/form/:reviewId"
-            element={<UpdateReview user={user} />}
+            path="/form/:productId/:reviewId"
+            element={
+              <UpdateReview
+                user={user}
+                reviews={reviews}
+                setReviews={setReviews}
+              />
+            }
           />
         </Routes>
       </main>
