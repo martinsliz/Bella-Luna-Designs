@@ -22,7 +22,7 @@ const Home = () => {
   }, [])
 
   return (
-    <div className="bg-rose-50">
+    <div className="bg-gradient-to-r from-rose-50 to-rose-400 via-fuchsia-300">
       <div className="relative isolate pt-14">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -46,21 +46,20 @@ const Home = () => {
                 Beautiful Hand-crafted jewelry made in Massachusetts.
               </p>
             </div>
-            <div className="mt-16 flow-root sm:mt-24">
-              <div className="-m-2 rounded-l bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
-                <Link to="/allProducts">
-                  <img
-                    width={900}
-                    height={100}
-                    className="rounded-md shadow-2xl ring-1 ring-gray-900/10"
-                    alt={mainPhoto.name}
-                    src={mainPhoto.image}
-                  />
-                </Link>
+            <div className="">
+              <div className="-m-2 rounded-l bg-gray-700/5 p-2 ring-1 ring-inset ring-gray-700/10 lg:-m-4 lg:rounded-2xl lg:p-4">
+                <img
+                  onClick={() => navigate('/allProducts')}
+                  width={500}
+                  height={500}
+                  className="rounded-md shadow-2xl ring-1 ring-gray-900/10"
+                  alt={mainPhoto.name}
+                  src={mainPhoto.image}
+                />
               </div>
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <button
-                  className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="rounded-lg bg-indigo-700/75 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   onClick={() => navigate('/allProducts')}
                 >
                   SHOP BELLA LUNA

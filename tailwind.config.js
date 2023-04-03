@@ -19,6 +19,9 @@ module.exports = {
     './src/pages/Order.jsx'
   ],
   theme: {
+    fontFamily: {
+      Castoro: ['Castoro', 'serif']
+    },
     extend: {}
   },
   corePlugins: {
