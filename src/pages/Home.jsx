@@ -22,7 +22,7 @@ const Home = () => {
   }, [])
 
   return (
-    <div className="bg-gradient-to-r from-rose-50 to-rose-400 via-fuchsia-300">
+    <div className="bg-gradient-to-r from-indigo-200 via-red-200 to-yellow-100">
       <div className="relative isolate pt-14">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -62,7 +62,7 @@ const Home = () => {
                   className="rounded-lg bg-indigo-700/75 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   onClick={() => navigate('/allProducts')}
                 >
-                  SHOP BELLA LUNA
+                  SHOP ALL BELLA LUNA
                 </button>
               </div>
             </div>
