@@ -1,12 +1,13 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const ReviewDisplay = ({ productId, review, deleteReview }) => {
   let navigate = useNavigate()
   return (
     <>
-      <div>
+      <div className="mt-6 space-y-10 divide-y divide-black border-b border-t pb-10">
         <h3>{review.content}</h3>
       </div>
+      <div></div>
       <div>
         <button
           onClick={() => navigate(`/form/${productId}/${review.id}`)}

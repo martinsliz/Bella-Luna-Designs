@@ -12,7 +12,6 @@ const people = [
     name: 'Liz Martins',
     role: 'Web Developer',
     imageUrl: 'https://imagizer.imageshack.com/img922/9600/ytDtvZ.jpg',
-    bio: '',
     gitHub: 'https://github.com/martinsliz',
     linkedinUrl: 'https://www.linkedin.com/in/elizmartins/'
   }
