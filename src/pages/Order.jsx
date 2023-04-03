@@ -1,14 +1,20 @@
 import { XMarkIcon } from '@heroicons/react/20/solid'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Order = ({ cart, setCart }) => {
+  let navigate = useNavigate()
+  // const [totalPrice, setTotalPrice] = useState(0)
+  const [cartItems, setCartItems] = useState(0)
   const totalPrice = cart.reduce((acc, item) => acc + item[0].price, 0)
-  // const deleteItem = () => {
-  //   cart.pop(item[0])
+
+  // const updateCart = (event) => {
+  //   const quantity = parseInt(event.target.value)
+  //   const newCart = cartItems + quantity
+  //   const newTotal = totalPrice + quantity * {item[0].price}
+  //   setCartItems(newCart)
+  //   setTotalPrice(newTotal)
   // }
-  console.log('items below')
-  console.log(cart)
-  console.log('price')
-  console.log(totalPrice)
 
   return (
     <div className="bg-white">
@@ -30,15 +36,35 @@ const Order = ({ cart, setCart }) => {
                 <div className="flex-shrink-0">
                   {cart.map((items) =>
                     items.map((item) => (
-                      <div>
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          className="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48"
-                        />
-                        <h2>{item.name}</h2>
-                        <h3>${item.price}</h3>
-                      </div>
+                      <>
+                        <div>
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48"
+                          />
+                          <h2>{item.name}</h2>
+                          <h3>${item.price}</h3>
+                        </div>
+                        <label htmlFor={`quantity-${item}`} className="sr-only">
+                          Quantity, {item.name}
+                        </label>
+                        <select
+                          // onChange={updateCart}
+                          id={`quantity-${item}`}
+                          name={`quantity-${item}`}
+                          className="max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
+                        >
+                          <option value={1}>1</option>
+                          <option value={2}>2</option>
+                          <option value={3}>3</option>
+                          <option value={4}>4</option>
+                          <option value={5}>5</option>
+                          <option value={6}>6</option>
+                          <option value={7}>7</option>
+                          <option value={8}>8</option>
+                        </select>
+                      </>
                     ))
                   )}
                 </div>
@@ -48,6 +74,7 @@ const Order = ({ cart, setCart }) => {
                     <div>
                       <div className="flex justify-between">
                         <h3 className="text-sm">
+                          WHAT
                           {/* <a
                             href={item.href}
                             className="font-medium text-gray-700 hover:text-gray-800"
@@ -60,24 +87,6 @@ const Order = ({ cart, setCart }) => {
                     </div>
 
                     <div className="mt-4 sm:mt-0 sm:pr-9">
-                      {/* <label htmlFor={`quantity-${item}`} className="sr-only">
-                        Quantity, {item.name}
-                      </label> */}
-                      {/* <select
-                        id={`quantity-${item}`}
-                        name={`quantity-${item}`}
-                        className="max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
-                      >
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                        <option value={6}>6</option>
-                        <option value={7}>7</option>
-                        <option value={8}>8</option>
-                      </select> */}
-
                       <div className="absolute right-0 top-0">
                         <button
                           // onClick={() => deleteItem()}
@@ -112,6 +121,7 @@ const Order = ({ cart, setCart }) => {
 
             <div className="mt-6">
               <button
+                onClick={() => navigate('/allProducts')}
                 type="submit"
                 className="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
               >

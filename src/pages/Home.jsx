@@ -2,11 +2,8 @@ import Client from '../services/api'
 import { Link, useNavigate } from 'react-router-dom'
 // import Search from '../components/Search'
 import { useState, useEffect } from 'react'
-import { Dialog } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const Home = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   let navigate = useNavigate()
   const [products, setProducts] = useState([])
   const [mainPhoto, setMainPhoto] = useState({})
@@ -25,7 +22,7 @@ const Home = () => {
   }, [])
 
   return (
-    <div className="bg-white">
+    <div className="bg-rose-50">
       <div className="relative isolate pt-14">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"

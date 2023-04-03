@@ -1,151 +1,183 @@
+import React from 'react'
 import { useState, useEffect } from 'react'
-import { useParams, useNavigate, Link } from 'react-router-dom'
-import {
-  CheckIcon,
-  QuestionMarkCircleIcon,
-  StarIcon
-} from '@heroicons/react/20/solid'
-import { RadioGroup } from '@headlessui/react'
-import { ShieldCheckIcon } from '@heroicons/react/24/outline'
-
-const reviews = { average: 4, totalCount: 1624 }
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+import Client from '../services/api'
+import { useParams, useNavigate } from 'react-router-dom'
+import ReviewDisplay from '../components/ReviewDisplay'
 
 const ProductDetails = ({ allProducts, cart, setCart }) => {
-  let { id } = useParams()
+  let navigate = useNavigate()
+  const { id } = useParams()
+  let { reviewId } = useParams()
+  // const { userId } = useParams()
+  // let { productId } = useParams()
   const [productId, setProductId] = useState(id)
   const user = localStorage.getItem('userId')
-  let navigate = useNavigate()
-  const [details, setDetails] = useState()
+  const [productDetails, setProductDetails] = useState([])
+  const [reviews, setReviews] = useState([])
   const result = allProducts.filter((product) => product.id === parseInt(id))
-  console.log(user)
-  const reviews = result[0]?.reviews.map((review, index) => {
-    return <div key={index}>{review.content}</div>
-  })
+
   useEffect(() => {
-    setDetails(result)
-  }, [allProducts])
+    const getProductDetails = async () => {
+      const response = await Client.get(`/api/products/${id}`)
+      console.log(response)
+      setProductDetails(response.data)
+      let reviews = response.data.reviews
+      console.log(reviews)
+      console.log('Reviews')
+      console.log(reviews[0].content)
+      setReviews(reviews)
+    }
+    getProductDetails()
+  }, [])
 
   const addToCart = (result) => {
     let newCart = [...cart]
-    console.log('cart below')
-    console.log(cart)
     newCart.push(result)
     setCart(newCart)
+  }
+
+  const deleteReview = async () => {
+    if (user) {
+      await Client.delete(`/api/reviews/${reviews[0].id}`)
+      console.log(reviewId + 'Delete Review')
+      window.location.reload(false)
+    }
   }
 
   return (
     <>
       <div className="bg-white">
-        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
-          Product details
-          {result.length > 0 && (
-            <div className="lg:max-w-lg lg:self-end">
-              <nav aria-label="Breadcrumb">
-                <ol role="list" className="flex items-center space-x-2">
-                  <li>
-                    <div className="flex items-center text-sm">
-                      <a className="font-medium text-gray-500 hover:text-gray-900">
-                        {' '}
-                        {/* <h5>{result[0].category}</h5> */}
-                      </a>
-                      {/* {breadcrumbIdx !== product.breadcrumbs.length - 1 ? (
-            <svg
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              aria-hidden="true"
-              className="ml-2 h-5 w-5 flex-shrink-0 text-gray-300"
-            >
-              <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
-            </svg>
-          ) : null} */}
-                    </div>
-                  </li>
-                </ol>
-              </nav>
-
-              <div className="mt-4">
-                <div>
-                  <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                    {result[0].name}
-                  </h1>
-                </div>
+        <div className="relative isolate pt-14">
+          <div
+            className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+            aria-hidden="true"
+          >
+            <div
+              className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+              style={{
+                clipPath:
+                  'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)'
+              }}
+            />
+          </div>
+          <div className="py-24 sm:py-32 lg:pb-40">
+            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+              <div className="mx-auto max-w-2xl text-center">
+                <h1 className="text-1xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                  {productDetails.name}
+                </h1>
+                <p className="mt-6 text-lg leading-8 text-gray-600">
+                  {productDetails.description}
+                </p>
+                <p>${productDetails.price}</p>
               </div>
-
-              <section aria-labelledby="information-heading" className="mt-4">
-                <h2 id="information-heading" className="sr-only">
-                  Product information
-                </h2>
-
-                <div className="flex items-center">
-                  <p className="text-lg text-gray-900 sm:text-xl">
-                    ${result[0].price}
-                  </p>
+              <div className="mt-16 flow-root sm:mt-24">
+                <div className="-m-2 rounded-l bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
+                  <img
+                    width={900}
+                    height={100}
+                    className="rounded-md shadow-2xl ring-1 ring-gray-900/10"
+                    alt={productDetails.name}
+                    src={productDetails.image}
+                  />
                 </div>
-
-                <div className="mt-4 space-y-6">
-                  <p className="text-base text-gray-500">
-                    {result[0].description}
-                  </p>
-                </div>
-              </section>
-            </div>
-          )}
-        </div>
-        // Product image
-        <div className="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
-          {result.length > 0 && (
-            <div className="-m-2 rounded-l bg-gray-700/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
-              <img
-                width={800}
-                height={100}
-                alt={result[0]?.name}
-                src={result[0].image}
-                className="object-contain object-center rounded-md shadow-2xl ring-1 ring-gray-900/10"
-              />
-
-              <div className="ml-4 border-l border-gray-300 pl-4">
-                <h2 className="sr-only">Reviews</h2>
-                <div className="flex items-center">
-                  <div>
-                    <div className="flex items-center">
-                      <div>Reviews: {reviews}</div>
+                {/* REVIEWS */}
+                <div className="bg-white">
+                  <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+                    <h2 className="text-lg font-medium text-gray-900">
+                      Recent reviews
+                    </h2>
+                    <div className="mt-6 space-y-10 divide-y divide-gray-200 border-b border-t border-gray-200 pb-10">
+                      <div className="lg:col-span-8 lg:col-start-5 xl:col-span-9 xl:col-start-4 xl:grid xl:grid-cols-3 xl:items-start xl:gap-x-8">
+                        <div className="mt-4 lg:mt-6 xl:col-span-2 xl:mt-0">
+                          <div className="mt-3 space-y-6 text-sm text-gray-500" />
+                          {reviews &&
+                            reviews.map((review) => (
+                              <ReviewDisplay {...review} key={review.id} />
+                            ))}
+                          <div>
+                            {{ reviews } ? (
+                              <>
+                                <button
+                                  onClick={() =>
+                                    navigate(`/form/${reviews.id}`)
+                                  }
+                                  type="button"
+                                  className="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                                >
+                                  Update
+                                </button>
+                                <button
+                                  onClick={() => deleteReview()}
+                                  type="button"
+                                  className="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                                >
+                                  Delete
+                                </button>
+                              </>
+                            ) : (
+                              <h4></h4>
+                            )}
+                          </div>
+                        </div>
+                      </div>
                     </div>
-
-                    <Link to={`/form/${user}/${productId}`}>
-                      Leave a Review!
-                    </Link>
-                    <p className="sr-only">{reviews.average} out of 5 stars</p>
                   </div>
-                  <p className="ml-2 text-sm text-gray-500">
-                    {reviews.totalCount} reviews
-                  </p>
+                  <div>
+                    <button
+                      onClick={() => navigate(`/form/${user}/${productId}`)}
+                      type="button"
+                      className="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                    >
+                      Write a Review
+                    </button>{' '}
+                  </div>
                 </div>
               </div>
+
+              {/* END OF REVIEWS */}
+              <div className="mx-auto max-w-2xl text-center">
+                <h3 className="mt-6 text-lg leading-8 text-gray-600"></h3>
+              </div>
+
+              <div className="mt-10 flex items-center justify-center gap-x-6">
+                <button
+                  onClick={() => addToCart(result)}
+                  className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                >
+                  Add to Cart
+                </button>
+              </div>
+              <div className="mt-6 text-center">
+                <span className="text-gray-500 hover:text-gray-700">
+                  {cart.length ? (
+                    <button
+                      onClick={() => navigate('/order')}
+                      type="button"
+                      className="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                    >
+                      View Cart
+                    </button>
+                  ) : (
+                    <h4></h4>
+                  )}
+                </span>
+              </div>
             </div>
-          )}
+          </div>
         </div>
-      </div>
-      <div className="mt-10 lg:col-start-1 lg:row-start-2 lg:max-w-lg lg:self-start">
-        <section aria-labelledby="options-heading">
-          <div className="mt-10">
-            <button
-              type="submit"
-              onClick={() => addToCart(result)}
-              className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
-            >
-              Add to Cart
-            </button>
-          </div>
-          <div className="mt-6 text-center">
-            <span className="text-gray-500 hover:text-gray-700">
-              {cart.length ? <Link to="/order">View Cart</Link> : <h4></h4>}
-            </span>
-          </div>
-        </section>
+        <div
+          className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+          aria-hidden="true"
+        >
+          <div
+            className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+            style={{
+              clipPath:
+                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)'
+            }}
+          />
+        </div>
       </div>
     </>
   )

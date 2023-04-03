@@ -2,10 +2,11 @@ import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Client from '../services/api'
 
-const UpdateReview = ({ user }) => {
+const UpdateReview = () => {
+  const user = localStorage.getItem('userId')
   let navigate = useNavigate()
-  const { productId } = useParams()
   const { id } = useParams()
+  const { productId } = useParams()
 
   const initialState = {
     content: ''

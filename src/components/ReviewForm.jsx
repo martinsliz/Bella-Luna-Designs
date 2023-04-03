@@ -3,12 +3,11 @@ import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 const ReviewForm = ({ user }) => {
-  let { id } = useParams
   let navigate = useNavigate()
-  const [productId, setProductId] = useState(id)
-  // const user = localStorage.getItem('userId')
-  // const { userId } = useParams()
-  // let { productId } = useParams()
+  let { reviewId } = useParams()
+  const { userId } = useParams()
+  let { productId } = useParams()
+  console.log(productId)
   const initialState = {
     content: ''
   }
@@ -20,7 +19,7 @@ const ReviewForm = ({ user }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    await Client.post(`/api/reviews/${productId}`, review)
+    await Client.post(`/api/reviews/${userId}/${productId}`, review)
     setReview(initialState)
     navigate(`/products/${productId}/`)
   }
@@ -40,7 +39,10 @@ const ReviewForm = ({ user }) => {
             value={review.content}
           ></textarea>
           <div>
-            <button className="formSubmit-btn" type="submit">
+            <button
+              type="submit"
+              className="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+            >
               Submit
             </button>
           </div>
