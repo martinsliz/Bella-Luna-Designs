@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-// import Search from './Search'
 import { Dialog } from '@headlessui/react'
 
 const Navbar = ({ user, handleLogOut }) => {
