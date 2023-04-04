@@ -41,7 +41,7 @@ const ProductDetails = ({ allProducts, cart, setCart }) => {
 
   return (
     <>
-      <div className="bg-gradient-to-br from-rose-100 to-teal-100">
+      <div className="">
         <div className="relative isolate pt-14">
           <div
             className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"

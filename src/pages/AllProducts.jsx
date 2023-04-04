@@ -6,7 +6,7 @@ const AllProducts = ({ allProducts, setAllProducts, reviews, setReviews }) => {
   let { id } = useParams()
   let navigate = useNavigate()
   return (
-    <div className="bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400">
+    <div className="">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className="sr-only">Products</h2>
 
