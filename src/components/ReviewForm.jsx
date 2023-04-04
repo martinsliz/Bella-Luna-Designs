@@ -4,10 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 const ReviewForm = ({ user }) => {
   let navigate = useNavigate()
-  let { reviewId } = useParams
-  const { userId } = useParams()
-  let { productId } = useParams()
-  console.log(productId)
+  const { userId, productId } = useParams()
   const initialState = {
     content: ''
   }

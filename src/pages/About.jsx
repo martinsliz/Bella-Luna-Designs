@@ -25,7 +25,8 @@ const About = () => {
           </h2>
           <p className="font-Castoro mt-6 text-lg leading-8 text-gray-600">
             Bella Luna Designs was created about five years ago as a hobby and
-            has become a successful small business. Thanks so much for visiting!
+            is on its way to becoming a successful small business. Thanks so
+            much for visiting!
           </p>
         </div>
         <ul
@@ -40,7 +41,7 @@ const About = () => {
               <img
                 className="aspect-[4/5] w-52 flex-none rounded-2xl object-cover"
                 src={person.imageUrl}
-                alt=""
+                alt={person.name}
               />
               <div className="max-w-xl flex-auto">
                 <h3 className="text-lg font-semibold leading-8 tracking-tight text-gray-900">
