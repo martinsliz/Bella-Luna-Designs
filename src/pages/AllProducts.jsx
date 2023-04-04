@@ -18,7 +18,7 @@ const AllProducts = ({ allProducts, setAllProducts, reviews, setReviews }) => {
                   onClick={() => navigate(`/products/${product.id}`)}
                   src={product.image}
                   alt={product.name}
-                  className="h-full w-full object-cover object-center group-hover:opacity-75"
+                  className="cursor-pointer h-full w-full object-cover object-center group-hover:opacity-75"
                 />
               </div>
               <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
