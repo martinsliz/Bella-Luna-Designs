@@ -41,7 +41,7 @@ const Home = () => {
               Bella Luna Designs
             </h1>
             <h3 className="mt-6 text-lg leading-8 text-gray-700 font-Castoro">
-              Beautiful Hand-crafted jewelry made in Massachusetts.
+              Beautiful hand-crafted jewelry made in Massachusetts.
             </h3>
           </div>
           <div className="mx-auto max-w-7xl px-6 lg:px-8">

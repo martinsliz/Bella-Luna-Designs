@@ -1,9 +1,6 @@
-// import ProductCard from '../components/ProductCard'
-
-import { useParams, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const AllProducts = ({ allProducts, setAllProducts, reviews, setReviews }) => {
-  let { id } = useParams()
   let navigate = useNavigate()
   return (
     <div className="">
