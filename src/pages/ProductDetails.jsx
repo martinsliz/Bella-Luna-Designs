@@ -18,7 +18,6 @@ const ProductDetails = ({ allProducts, cart, setCart }) => {
     const getProductDetails = async () => {
       const response = await Client.get(`/api/products/${id}`)
       setProductDetails(response.data)
-      console.log(response.data)
       let reviews = response.data.reviews
       setReviews(reviews)
     }
@@ -34,7 +33,7 @@ const ProductDetails = ({ allProducts, cart, setCart }) => {
   const deleteReview = async () => {
     if (user) {
       await Client.delete(`/api/reviews/${reviews[0].id}`)
-      console.log(reviewId + 'Delete Review')
+      console.log('Deleted review' + reviewId)
       window.location.reload(false)
     }
   }
@@ -109,7 +108,7 @@ const ProductDetails = ({ allProducts, cart, setCart }) => {
               </div>
 
               <div className="mx-auto max-w-2xl text-center">
-                <h3 className="mt-6 text-lg leading-8 text-gray-600"></h3>
+                <h3 className="mt-6 text-lg leading-8 text-gray-600"> </h3>
               </div>
 
               <div className="mt-10 flex items-center justify-center gap-x-6">
@@ -140,7 +139,7 @@ const ProductDetails = ({ allProducts, cart, setCart }) => {
                       View Cart
                     </button>
                   ) : (
-                    <h4></h4>
+                    <h4> </h4>
                   )}
                 </span>
               </div>

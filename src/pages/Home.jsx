@@ -10,7 +10,6 @@ const Home = () => {
   const getProducts = async () => {
     const response = await Client.get(`/api/products`)
     setProducts(response.data)
-    let products = response.data
     let coverPhoto =
       response.data[Math.floor(Math.random() * response.data.length)]
     setMainPhoto(coverPhoto)

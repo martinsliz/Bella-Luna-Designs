@@ -54,7 +54,7 @@ const Order = ({ cart, setCart }) => {
                   <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
                     <div>
                       <div className="flex justify-between">
-                        <h3 className="text-sm"></h3>
+                        <h3 className="text-sm"> </h3>
                       </div>
                       <div className="mt-1 flex text-sm"></div>
                     </div>

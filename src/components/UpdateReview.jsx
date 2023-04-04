@@ -43,7 +43,9 @@ const UpdateReview = ({ reviews, setReviews }) => {
         </div>
         <div className="py-24 sm:py-32 lg:pb-40">
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-bold font-Castoro tracking-tight text-gray-800 sm:text-6xl"></h1>
+            <h1 className="text-4xl font-bold font-Castoro tracking-tight text-gray-800 sm:text-6xl">
+              {' '}
+            </h1>
             <h3 className="mt-6 text-lg leading-8 text-gray-700 font-Castoro">
               Update your review here...
             </h3>

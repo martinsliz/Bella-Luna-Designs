@@ -4,7 +4,6 @@ export const SignInUser = async (data) => {
   try {
     const res = await Client.post('/api/users/login', data)
     localStorage.setItem('token', res.data.token)
-    console.log(res.data.user)
     localStorage.setItem('userId', res.data.user.id)
     return res.data.user
   } catch (error) {
