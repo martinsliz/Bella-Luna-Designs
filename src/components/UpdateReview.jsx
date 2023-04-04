@@ -27,7 +27,7 @@ const UpdateReview = ({ reviews, setReviews }) => {
   }
 
   return user ? (
-    <div className="bg-gradient-to-r from-indigo-200 via-red-200 to-yellow-100">
+    <div className="h-screen bg-gradient-to-r from-indigo-200 via-red-200 to-yellow-100">
       <div className="relative isolate pt-14">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
