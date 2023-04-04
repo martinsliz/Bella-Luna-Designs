@@ -86,7 +86,7 @@ const App = () => {
             element={<ReviewForm user={user} />}
           />
           <Route
-            path="/form/:productId/:reviewId"
+            path="/uform/:productId/:reviewId"
             element={
               <UpdateReview
                 user={user}
