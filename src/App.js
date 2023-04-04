@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './styles.css'
 import Client from './services/api'
 import NavBar from './components/NavBar'
@@ -15,6 +16,7 @@ import { CheckSession } from './services/User'
 import Order from './pages/Order'
 
 const App = () => {
+  let navigate = useNavigate()
   const [user, setUser] = useState(null)
   const [allProducts, setAllProducts] = useState([])
   const [reviews, setReviews] = useState([])
@@ -23,6 +25,7 @@ const App = () => {
   const handleLogOut = () => {
     setUser(null)
     localStorage.clear()
+    navigate('/')
   }
 
   const checkToken = async () => {

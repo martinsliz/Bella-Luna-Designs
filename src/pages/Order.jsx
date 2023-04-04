@@ -68,15 +68,7 @@ const Order = ({ cart, setCart }) => {
                   <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
                     <div>
                       <div className="flex justify-between">
-                        <h3 className="text-sm">
-                          WHAT
-                          {/* <a
-                            href={item.href}
-                            className="font-medium text-gray-700 hover:text-gray-800"
-                          >
-                            {item.name}
-                          </a> */}
-                        </h3>
+                        <h3 className="text-sm"></h3>
                       </div>
                       <div className="mt-1 flex text-sm"></div>
                     </div>
@@ -84,14 +76,9 @@ const Order = ({ cart, setCart }) => {
                     <div className="mt-4 sm:mt-0 sm:pr-9">
                       <div className="absolute right-0 top-0">
                         <button
-                          // onClick={() => deleteItem()}
                           type="button"
                           className="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500"
-                        >
-                          <span className="sr-only">Remove</span>
-                          Delete Item
-                          <XMarkIcon className="h-5 w-5" aria-hidden="true" />
-                        </button>
+                        ></button>
                       </div>
                     </div>
                   </div>
@@ -99,8 +86,6 @@ const Order = ({ cart, setCart }) => {
               </li>
             </ul>
           </section>
-
-          {/* Order summary */}
           <section
             aria-labelledby="summary-heading"
             className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8"
