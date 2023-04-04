@@ -76,7 +76,6 @@ const ProductDetails = ({ allProducts, cart, setCart }) => {
                     src={productDetails.image}
                   />
                 </div>
-                {/* REVIEWS */}
                 <div className="relative top-10px -m-2 rounded-l">
                   <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
                     <h2 className="text-lg font-medium text-gray-900">
@@ -109,7 +108,6 @@ const ProductDetails = ({ allProducts, cart, setCart }) => {
                 </div>
               </div>
 
-              {/* END OF REVIEWS */}
               <div className="mx-auto max-w-2xl text-center">
                 <h3 className="mt-6 text-lg leading-8 text-gray-600"></h3>
               </div>

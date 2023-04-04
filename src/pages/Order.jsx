@@ -1,20 +1,8 @@
-import { XMarkIcon } from '@heroicons/react/20/solid'
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const Order = ({ cart, setCart }) => {
   let navigate = useNavigate()
-  // const [totalPrice, setTotalPrice] = useState(0)
-  const [cartItems, setCartItems] = useState(0)
   const totalPrice = cart.reduce((acc, item) => acc + item[0].price, 0)
-
-  // const updateCart = (event) => {
-  //   const quantity = parseInt(event.target.value)
-  //   const newCart = cartItems + quantity
-  //   const newTotal = totalPrice + quantity * {item[0].price}
-  //   setCartItems(newCart)
-  //   setTotalPrice(newTotal)
-  // }
 
   return (
     <div className="bg-white">
@@ -46,9 +34,7 @@ const Order = ({ cart, setCart }) => {
                           <h2>{item.name}</h2>
                           <h3>${item.price}</h3>
                         </div>
-                        <label className="sr-only">
-                          Where is this Quantity, {item.name}
-                        </label>
+                        <label className="sr-only">Quantity</label>
                         <select className="max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm">
                           <option value={1}>1</option>
                           <option value={2}>2</option>
@@ -107,12 +93,6 @@ const Order = ({ cart, setCart }) => {
               >
                 Continue Shopping
               </button>
-              {/* <button
-                type="submit"
-                className="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
-              >
-                Checkout
-              </button> */}
             </div>
           </section>
         </form>
